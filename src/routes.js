@@ -82,7 +82,7 @@ const Job = {
 
         save(req, res) {
             const id = Job.data[Job.data.length - 1]?.id + 1 || 1
-
+            
             Job.data.push({
                 id: id,
                 name: req.body.name,
@@ -90,6 +90,8 @@ const Job = {
                 "total-hours": req.body["total-hours"],
                 created_at: Date.now()
             })
+            
+            res.redirect('/')
         },
 
         show(req, res) {
@@ -130,10 +132,9 @@ const Job = {
         },
 
         delete(req, res) {
-            alert("aqui")
-            // const jobId = Number(req.params.id)
+            const jobId = Number(req.params.id)
             
-            // Job.data = Job.data.filter(job => Number(job.id) !== jobId)
+            Job.data = Job.data.filter(job => Number(job.id) !== jobId)
 
             return res.redirect('/')
         }
