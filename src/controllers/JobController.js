@@ -11,15 +11,13 @@ module.exports = {
     const jobs = Job.getData();
     const id = jobs[jobs.length - 1]?.id + 1 || 1;
 
-    jobs.push({
+    Job.insert({
       id: id,
       name: req.body.name,
       "daily-hours": req.body["daily-hours"],
       "total-hours": req.body["total-hours"],
       created_at: Date.now(),
-    })
-
-    Job.update(jobs);
+    });
 
     res.redirect("/");
   },

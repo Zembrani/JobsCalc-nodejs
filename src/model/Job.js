@@ -20,15 +20,18 @@ module.exports = {
     return data;
   },
 
-  // Permite alterar ou incluir novos jobs
+  // Permite apenas alterar
   update(newData) {
-    // Imperdir que seja feita operação de remover item pelo update
-    if (newData.length >= data.length) {
+    if (newData.length === data.length) {
       data = newData
     }
   },
 
   remove(id) {
     data = data.filter((job) => Number(job.id) !== Number(id))
+  },
+
+  insert(newJob) {
+    data.push(newJob)
   }
 };
